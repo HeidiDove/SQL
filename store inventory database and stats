@@ -1,0 +1,34 @@
+--Create a store database
+
+CREATE TABLE inventory (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity INTEGER, aisle INTEGER);
+INSERT INTO inventory VALUES (1, "face soap", 9.99, 20, 1);
+INSERT INTO inventory VALUES (2, "face wash", 11.99, 15,1);
+INSERT INTO inventory VALUES (3, "deoderant", 3.99, 10,2);
+INSERT INTO inventory VALUES (4, "shampoo", 12.99, 15,2);
+INSERT INTO inventory VALUES (5, "conditioner", 12.99, 15,2);
+INSERT INTO inventory VALUES (6, "detangler", 5.99, 10, 2);
+INSERT INTO inventory VALUES (7, "foundation", 13.49, 12,3);
+INSERT INTO inventory VALUES (8, "blush", 8.99, 10,3);
+INSERT INTO inventory VALUES (9, "concealor", 5.99, 10, 3);
+INSERT INTO inventory VALUES (10, "mascara", 9.99, 8, 3);
+INSERT INTO inventory VALUES (11, "eyeliner", 9.99, 20, 3);
+INSERT INTO inventory VALUES (12, "candles", 4.99, 15, 4);
+INSERT INTO inventory VALUES (13, "votive holder", 19.99, 5, 4);
+INSERT INTO inventory VALUES (14, "honey", 15.99, 7, 4);
+INSERT INTO inventory VALUES (15, "tea", 9.99, 10, 4);
+
+SELECT* FROM inventory;
+
+--display sum of quantities
+SELECT SUM(quantity) FROM inventory;
+
+--select items where price is greater than $5
+SELECT * FROM inventory WHERE price>5
+ORDER BY aisle DESC;
+
+--What is the average price of all items in inventory?
+SELECT AVG(price) FROM inventory;
+
+What is the average price of items from each aisle?
+SELECT aisle, AVG(price) FROM inventory GROUP BY aisle;
+
