@@ -420,3 +420,15 @@ ORDER BY COUNT(Undergraduate_major) DESC;
 
 SELECT Graduate_major,COUNT(Graduate_major) FROM Astronauts GROUP BY Graduate_major
 ORDER BY COUNT(Graduate_major) DESC;
+
+/*what are the ranks represented in each branch?*?
+
+SELECT Military_Rank, COUNT(Military_Rank), 
+    CASE
+    WHEN Military_Branch LIKE "%Air%" THEN "Air Force"
+    WHEN Military_Branch LIKE "%Navy%" THEN "Navy"
+    WHEN Military_Branch LIKE "%Army%" THEN "Army"
+    WHEN Military_Branch LIKE "%Mar%" THEN "Marines"
+    ELSE " "
+    END AS "Branch"
+FROM Astronauts
