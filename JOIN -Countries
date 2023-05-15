@@ -1,0 +1,24 @@
+CREATE TABLE countries (id INTEGER PRIMARY KEY, name TEXT, population INTEGER, happiness_index INTEGER, predominant_healthcare_system INTEGER);
+
+
+INSERT INTO countries (id, name, population, happiness_index,predominant_healthcare_system ) VALUES (1, "United States", 331900000, 6.951, 3);
+
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (2, "Ecuador", 17800000, 5.674, 2);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (3, "Costa Rica", 5154000, 7.069, 1);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (4, "Portugal", 10330000, 5.929, 2);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (5, "Spain", 47420000, 6.491, 1);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (6, "Denmark", 5857000, 7.62, 2);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (7, "Germany", 83200000, 7.155, 2);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (8, "France", 67750000, 6.69, 2);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (9, "Egypt", 109300000, 4.283, 3);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (10, "Canada", 38250000, 7.103, 1);
+INSERT INTO countries (id, name, population, happiness_index, predominant_healthcare_system) VALUES (11, "Mexico", 126700000, 6.317, 2);
+
+CREATE TABLE healthcare (id INTEGER PRIMARY KEY, type text);
+INSERT INTO healthcare (id, type) VALUES (1, "Public");
+
+INSERT INTO healthcare (id, type) VALUES (2, "Mostly public, some private");
+INSERT INTO healthcare (id, type) VALUES (3, "Mostly private, some public");
+INSERT INTO healthcare (id, type) VALUES (4, "Private");
+
+SELECT c. name AS Country, h.type AS Health_System FROM countries c JOIN healthcare h ON c.predominant_healthcare_system = h.id ORDER BY happiness_index DESC;
