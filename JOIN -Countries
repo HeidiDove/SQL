@@ -21,4 +21,25 @@ INSERT INTO healthcare (id, type) VALUES (2, "Mostly public, some private");
 INSERT INTO healthcare (id, type) VALUES (3, "Mostly private, some public");
 INSERT INTO healthcare (id, type) VALUES (4, "Private");
 
+/* What kind of healthcare does each country have, ranked by happiness index*/
 SELECT c. name AS Country, h.type AS Health_System FROM countries c JOIN healthcare h ON c.predominant_healthcare_system = h.id ORDER BY happiness_index DESC;
+
+/*how many incarcertated people in each country?*/
+
+CREATE TABLE incarceration (country_id INTEGER PRIMARY KEY, per_100K INTEGER);
+
+INSERT INTO incarceration (country_id, per_100k) VALUES (1, 664);
+
+INSERT INTO incarceration (country_id, per_100k) VALUES (2, 224);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (3, 374);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (4, 111);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (5, 112);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (6, 72);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (7, 69);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (8, 93);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (9, 118);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (10, 104);
+ INSERT INTO incarceration (country_id, per_100k) VALUES (11, 116);
+ 
+SELECT c.name AS country, c.population, i.per_100k, population/100000 * (i.per_100k) AS total_incarcertated FROM countries c JOIN incarceration i ON c.id = i.country_id;
+
