@@ -1,4 +1,4 @@
-#In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data. 
+#In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data using PostgreSQL
 
 /*Try to figure out which attribute you'd use to be able to join the two tables*/
 
