@@ -44,5 +44,4 @@ FROM BIT_DB.Spotifydata;
 /*What is the average danceability for the 10 most popular songs?*/
 SELECT AVG(danceability)
 FROM BIT_DB.Spotifydata
-ORDER BY popularity DESC
-LIMIT 10;
+ORDER BY popularity DESC;
