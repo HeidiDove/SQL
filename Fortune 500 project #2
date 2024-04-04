@@ -1,0 +1,65 @@
+SELECT *
+FROM fortune_companies;
+
+--Minimum Employee Tenure
+
+SELECT MIN(avg_employee_tenure)
+FROM fortune_companies;
+
+--Maximum employee tenure
+
+SELECT MAX (avg_employee_tenure)
+FROM fortune_companies;
+
+--Average employee tenure
+
+SELECT AVG (avg_employee_tenure)
+FROM fortune_companies;
+
+--count of companies that have insurance, versus those who do not
+
+SELECT COUNT (*),
+CASE WHEN healthcare_benefits = 1 THEN "YES"
+WHEN healthcare_benefits = 0 THEN "NO"
+END AS "offers_healthcare"
+FROM fortune_companies
+GROUP BY healthcare_benefits;
+
+--Which companies have at least 12 weeks maternity leave, 20 days of PTO, fewer than 5000 employees, or above average tenure.
+
+SELECT company_name, paid_time_off_days, employees, maternity_leave_weeks, avg_employee_tenure,
+CASE WHEN avg_employee_tenure >= 6 THEN "above_average"
+ELSE "below_average"
+END AS "tenure"
+FROM fortune_companies
+WHERE maternity_leave_weeks >= 12
+AND employees < 5000
+AND paid_time_off_days >= 20
+OR tenure = "above_average"
+ORDER BY tenure;
+
+--Which industries have an average revenue of at least $200B, and what are they:
+
+SELECT industry, ROUND(AVG(revenue)) AS Aavg_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING AVG(revenue) >= 200;
+
+--Which industies have at least 15K employees and what are they?
+
+SELECT industry, SUM(employees)
+FROM fortune_companies
+GROUP BY industry
+HAVING SUM(employees) >= 15000
+ORDER BY SUM(employees) DESC;
+
+--Assign all companies in the Healthcare industry as "mother friendly" "acceptable", or "abysmal" based on the maternity leave offered. 
+
+SELECT company_name,
+CASE WHEN maternity_leave_weeks >= 16 THEN "mother_friendly"
+WHEN maternity_leave_weeks >= 12 THEN "acceptable"
+ELSE "abysmal"
+END AS "freindly_to_mothers"
+FROM fortune_companies
+WHERE industry = "Healthcare";
+
